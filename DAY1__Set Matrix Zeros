@@ -1,0 +1,112 @@
+
+void helper(vector<vector<int>> &matrix, int i, int j, int row, int col) {
+    int t1 = i;
+    int t2 = j;
+    matrix[i][j] = -1;
+
+    // right move
+    while (j < col) {
+        if (matrix[i][j] != 0) {
+            matrix[i][j] = -1;
+        }
+        j++;
+    }
+
+    // left move
+    j = t2;
+    while (j >= 0) {
+        if (matrix[i][j] != 0) {
+            matrix[i][j] = -1;
+        }
+        j--;
+    }
+
+    // top move
+    j = t2;
+    while (i >= 0) {
+        if (matrix[i][j] != 0) {
+            matrix[i][j] = -1;
+        }
+        i--;
+    }
+
+    // bottom move
+    i = t1;
+    while (i < row) {
+        if (matrix[i][j] != 0) {
+            matrix[i][j] = -1;
+        }
+        i++;
+    }
+}
+
+void setZeros(vector<vector<int>> &matrix) {
+    // Write your code here.
+    int row = matrix.size();
+    int col = matrix[0].size();
+
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            if (matrix[i][j] == 0)
+                helper(matrix, i, j, row, col);
+        }
+    }
+
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            if (matrix[i][j] == -1)
+                matrix[i][j] = 0;
+        }
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void setZeros(vector<vector<int>> &matrix)
+
+{
+
+    int n=matrix.size();
+
+        int m=matrix[0].size();
+
+      vector<int>row(n,0);
+
+      vector<int>col(m,0);
+
+      for(int i=0;i<n;i++){
+
+          for(int j=0;j<m;j++){
+
+              if(matrix[i][j]==0){
+
+                  row[i]=1;
+
+                  col[j]=1;
+
+              }
+
+          }
+
+      } 
+
+ 
+
+      for(int i=0;i<n;i++){
+
+          for(int j=0;j<m;j++){
+
+              if(row[i] or col[j]){
+
+                  matrix[i][j]=0;
+
+              }
+
+          }
+
+      } 
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////
